@@ -93,9 +93,17 @@ public class JobData {
 
         for (HashMap<String, String> row : allJobs) {
 
-            for (String column : row.keySet()) {
+            ArrayList<String> keys = new ArrayList<>(row.keySet());
 
-                jobs.add(row);
+            for (String column : keys) {
+                String aValue = row.get(column);
+                aValue = aValue.toLowerCase();
+
+                if (aValue.contains(value)) {
+                    jobs.add(row);
+                    break;
+                }
+
 
             }
 
